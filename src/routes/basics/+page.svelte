@@ -1,5 +1,8 @@
-<script>
-	import ColorPicker from '../../learn/basics/ColorPicker.svelte';
+<script lang="ts">
+	import AwaitBlock from '../../learn/basics/AwaitBlock.svelte';
+	import Binding from '../../learn/basics/Binding.svelte';
+	import Canvas from '../../learn/basics/Canvas.svelte';
+import ColorPicker from '../../learn/basics/ColorPicker.svelte';
 	import FirstComponent from '../../learn/basics/FirstComponent.svelte';
 	import Package from '../../learn/basics/Package.svelte';
 	import Reactivity from '../../learn/basics/Reactivity.svelte';
@@ -12,34 +15,37 @@
 		website: 'https://svelte.dev'
 	};
 
-	let things = [
+	let things: { id: number; name: 'apple' | 'banana' | 'carrot' | 'doughnut' | 'egg' }[] = [
 		{ id: 1, name: 'apple' },
 		{ id: 2, name: 'banana' },
 		{ id: 3, name: 'carrot' },
 		{ id: 4, name: 'doughnut' },
 		{ id: 5, name: 'egg' }
-	]
+	];
 </script>
 
 <svelte:head>
-    <title>Basics</title>
+	<title>Basics</title>
 	<meta name="description" content="Svelte Basics Learn" />
 </svelte:head>
 
 <div>
 	<FirstComponent />
 	<Reactivity title="Reactivty with props" />
-	<Reactivity />
+	<Reactivity on:message={(event) => alert(event.detail.text)}/>
 	<Package {...pkg} />
 	<ColorPicker />
+	<AwaitBlock />
+	<Canvas />
+	<Binding />
 
 	<div class="things">
 		<h2>Things</h2>
 		{#each things as thing (thing.id)}
-			<Thing name={thing.name}/>
+			<Thing name={thing.name} />
 		{/each}
 
-		<button on:click={() => things = things.slice(1)}>Remove last thing</button>
+		<button on:click={() => (things = things.slice(1))}>Remove last thing</button>
 	</div>
 </div>
 
