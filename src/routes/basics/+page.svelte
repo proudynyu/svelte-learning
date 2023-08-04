@@ -2,11 +2,12 @@
 	import AwaitBlock from '../../learn/basics/AwaitBlock.svelte';
 	import Binding from '../../learn/basics/Binding.svelte';
 	import Canvas from '../../learn/basics/Canvas.svelte';
-import ColorPicker from '../../learn/basics/ColorPicker.svelte';
+	import ColorPicker from '../../learn/basics/ColorPicker.svelte';
 	import FirstComponent from '../../learn/basics/FirstComponent.svelte';
 	import GroupInputs from '../../learn/basics/GroupInputs.svelte';
 	import Mounting from '../../learn/basics/Mounting.svelte';
 	import Package from '../../learn/basics/Package.svelte';
+	import Paint from '../../learn/basics/Paint/Paint.svelte';
 	import Reactivity from '../../learn/basics/Reactivity.svelte';
 	import TextingArea from '../../learn/basics/TextingArea.svelte';
 	import Thing from '../../learn/basics/Thing.svelte';
@@ -35,7 +36,7 @@ import ColorPicker from '../../learn/basics/ColorPicker.svelte';
 <div>
 	<FirstComponent />
 	<Reactivity title="Reactivty with props" />
-	<Reactivity on:message={(event) => alert(event.detail.text)}/>
+	<Reactivity on:message={(event) => alert(event.detail.text)} />
 	<Package {...pkg} />
 	<ColorPicker />
 	<AwaitBlock />
@@ -54,6 +55,9 @@ import ColorPicker from '../../learn/basics/ColorPicker.svelte';
 		<button on:click={() => (things = things.slice(1))}>Remove last thing</button>
 	</div>
 
+	<div style="margin-top: 1rem">
+		<Paint />
+	</div>
 </div>
 
 <style>
